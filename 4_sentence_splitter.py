@@ -27,7 +27,7 @@ with open(file_n, 'r') as fr: # Open original in read mode
         for word in f_content: # loop through words from original file
             line = word + ' '
             if word.endswith(boundaries[0]) or word.endswith(boundaries[1]) or word.endswith(boundaries[2]):
-                # Could show ignore the exceptions
+                # Should show ignore the exceptions
                 line += '\n'
 
             copied_text += line
