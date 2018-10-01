@@ -12,18 +12,25 @@ Your task here is to write a program that given the name of a text file can writ
 
 import os
 
-file_path = os.chdir('/home/manu/Desktop/computer_science/semester1/exercises/program_design_methods/files/text_files')
-file_n = 'mr_miyagi.txt'
+file_path = os.chdir('/home/manu/Desktop/computer_science/semester1/exercises/program_design_methods/files/text_files') # path destination
+file_n = 'mr_miyagi.txt' # file to read and copy from
+boundaries = ['.', '!', '?']
+exceptions = ['Mr.', 'Mrs.', 'Dr.', 'Jr.']
+copied_text = ''
 
-with open(file_n, 'r') as fr:
-    # Open original file to read from
+with open(file_n, 'r') as fr: # Open original in read mode
+    f_content = fr.read().split()
+    # print(f_content)
 
-    with open('resentence.txt', 'w') as fw:
-        # write the contents of the original file into the new one
-        for line in fr:
-            new = line.split('.') # use split to split lines
-            print(''.join(new))
-            #print(new)
-            fw.write(line)
+    with open('resentence.txt', 'w') as fw: # write the contents of the original file into the new one
+        
+        for word in f_content: # loop through words from original file
+            line = word + ' '
+            if word.endswith(boundaries[0]) or word.endswith(boundaries[1]) or word.endswith(boundaries[2]):
+                # Could show ignore the exceptions
+                line += '\n'
 
-    
+            copied_text += line
+        print(copied_text)
+        c_to_f = fw.write(copied_text)
+        

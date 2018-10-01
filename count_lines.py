@@ -5,32 +5,21 @@ Write a program that given a text file will create a new text file in which all 
 
 import os
 
-file_path = os.chdir('/home/manu/Desktop/computer_science/semester1/exercises/program_design_methods/files/text_files')
-file_n = 'original_file.txt'
+file_path = os.chdir('/home/manu/Desktop/computer_science/semester1/exercises/program_design_methods/files/text_files') # working directory
+file_n = 'pride_and_prejudice.txt' # filename
+count = 0
 
-# Read original file
-with open(file_n, 'r') as f:
-    f_content = f.readlines()
-    #print(f_content)
-    
-    print()
-    
-    with open('new_copy.txt', 'w') as wf: 
-        copy_content = wf.writelines(f_content) # Copy content from the original .txt file
+with open(file_n, 'r') as f: # open file in readmode 
+
+    with open('count_lines.txt', 'w') as fw: # open file in write mode
         
+        for line in f: # iterate over each line from file to read from
+            count += 1 # Count the number of lines
+            copy = fw.write('Line {}: {}'.format(count, line)) # format the string
 
-with open('new_copy.txt', 'r') as rc:
-    print('Copied text file: ')
-    read_copy = rc.read().split()
-    #print(read_copy)
+    
+    
 
-    counter = 1
-
-    for i in read_copy:
-        counter += 1
-        new
-        print('{} {}'.format(counter, i))
-        
 
 
 

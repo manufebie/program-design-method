@@ -1,22 +1,30 @@
-import os
+import re
 
-file_path = os.chdir('/home/manu/Desktop/computer_science/semester1/exercises/program_design_methods/files/text_files')
-file_n = 'pride_and_prejudice.txt'
+text = '''
+abcdefghijklmnopqurtuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+1234567890
+Ha HaHa
+MetaCharacters (Need to be escaped):
+. ^ $ * + ? { } [ ] \ | ( )
+coreyms.com
+321-555-4321
+123.555.1234
+123*555*1234
+800-555-1234
+900-555-1234
+Mr. Schafer
+Mr Smith
+Ms Davis
+Mrs. Robinson
+Mr. T
+'''
 
-with open(file_n, 'r') as f:
-    chars = f.read()
-    content = f.read().split()
-    #print(content)
+sentence = 'Start a sentence and then bring it to an end'
 
-    count = 1
+pattern = re.compile(r'abc')
 
-    for c in content:
-        count += 1
+matches = pattern.finditer(text)
 
-    numofchars = 1
-    for char in chars:
-        numofchars +=1
-    
-    print(numofchars)
-
-    print(count)
+for match in matches:
+    print(match)
