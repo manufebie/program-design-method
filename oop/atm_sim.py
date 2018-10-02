@@ -8,6 +8,7 @@
 class BankAccount:
     # class variables
     bank_name = 'Hogwartz Finances'
+    accounts = 0
 
     # constractors -> values differ from each instance
     # All accounts starts with the same balace -> 0.00
@@ -15,6 +16,8 @@ class BankAccount:
         self.firstname = firstname
         self.lastname = lastname
         self.balance = balance
+
+        BankAccount.accounts += 1
 
     @property # to get atrribute value
     def account_detail(self):
@@ -47,3 +50,5 @@ account3.withdraw(1000)
 #print(account1.account_detail)
 #print()
 print(account3.account_detail)
+print()
+print('Total accounts: {}'.format(BankAccount.accounts))
