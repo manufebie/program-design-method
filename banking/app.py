@@ -1,5 +1,6 @@
 '''
 OOP program using static data
+To run this program, run this file in your terminal.
 '''
 import os, sys
 
