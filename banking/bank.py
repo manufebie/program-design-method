@@ -1,30 +1,19 @@
-'''
---> Add customer
---> Get customer amount
---> Get customer
-'''
-from customer import Customer
+from customer import Client
+
 
 class Bank:
-
+    '''Class representing a bank'''
+    
     def __init__(self, name):
         self.name = name
-        self.customers = []
+        self.clients = {}
 
-        Customer.num_of_customers += 1
+    def __str__(self):
+        return 'Bank name: {}'.format(name)
 
-    def add_customer(self, firstname, lastname):
-        customer = Customer(firstname, lastname)
-        self.customers.append(customer)
-    
-    def get_customers(self): 
+    def create_client(self, username, fullname):
+        self.clients[username] = Client(fullname)
 
-        for c in self.customers:
-            print('{}'.format(c))
-
-
-
-            
-
-    
-        
+    def display_clients(self):
+        for key, value in self.clients.items():
+            return key, value
