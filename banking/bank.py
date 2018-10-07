@@ -16,4 +16,4 @@ class Bank:
 
     def display_clients(self):
         for key, value in self.clients.items():
-            return key, value
+            print('{}'.format(value))

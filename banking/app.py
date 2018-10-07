@@ -4,7 +4,7 @@ To run this program, run this file in your terminal.
 '''
 import os, sys
 
-from bank import Bank
+from bank import Bank, Client
 
 TOP = '''********************************************
         ~ Gringotts Wizarding Bank ~
@@ -21,7 +21,8 @@ bank1.create_client('alb_dumble', 'Albus Dumbledore')
 #bank1.clients['har_potter'].deposit(200)
 
 menu1 = ['[1] Create Account',
-         '[2] Sign in']
+         '[2] Sign in',
+         '[3] Client Database']
 
 menu2 = ['[1] Check Balance', 
          '[2] Deposit Money',
@@ -47,6 +48,16 @@ def main():
         create_customer_account()
     elif choice == 2:
         login()
+    elif choice == 3:
+        clear()
+        print(TOP)
+        print('~ Client Database ~\n')
+        print('Total customers: {}\n'.format(Client.total_clients))
+        bank1.display_clients()
+        
+        x = input('\nEnter "Q" to go back: ')
+        if x.lower() == 'q':
+            main()
 
 def create_customer_account():
     '''Create a customer/client instance with a username and fullname'''
