@@ -13,3 +13,6 @@ class Client(BaseAccount):
 
     def __str__(self):
         return 'Account holder: {}'.format(self.fullname)
+
+    def display_name(self):
+        return self.fullname

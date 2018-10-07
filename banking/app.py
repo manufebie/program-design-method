@@ -107,6 +107,9 @@ def show_menu():
     
     clear()
     print(TOP)
+    # Message to welcome user and show the logged in user
+    print('~ Welcome {} ~\n'.format(bank1.clients[auth].display_name()))
+
     for option in menu2:
         print('{}'.format(option))
     print()
