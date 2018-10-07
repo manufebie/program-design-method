@@ -5,11 +5,13 @@ To run this program, run this file in your terminal.
 import os, sys
 
 from bank import Bank, Client
+from time import sleep
 
-TOP = '''********************************************
-        ~ Gringotts Wizarding Bank ~
-********************************************
-'''
+def display_title_bar():
+    print('********************************************')
+    print('       ~ Gringotts Wizarding Bank ~         ')
+    print('********************************************')
+    print()
 
  # Bank instance
 bank1 = Bank('Gringottz Wizarding Bank')
@@ -38,7 +40,7 @@ def main():
     '''Function that starts the app'''
 
     clear()
-    print(TOP)
+    display_title_bar()
     for option in menu1:
         print(option)
     print()
@@ -50,7 +52,7 @@ def main():
         login()
     elif choice == 3:
         clear()
-        print(TOP)
+        display_title_bar()
         print('~ Client Database ~\n')
         print('Total customers: {}\n'.format(Client.total_clients))
         bank1.display_clients()
@@ -63,15 +65,20 @@ def create_customer_account():
     '''Create a customer/client instance with a username and fullname'''
 
     clear()
-    print(TOP)
+    display_title_bar()
 
     print('~ Create your bank account at {} ~\n'.format(bank1.name))
     username = input('Username: ')
+
+    if ' ' in username: # Checks if username contains spaces
+        print('Cannot contain spaces, please try again.')
+        sleep(3)
+        create_customer_account()
     fullname = input('Fullname: ')
     bank1.create_client(username, fullname)
     
     clear()
-    print(TOP)
+    display_title_bar()
     
     print('\n~ Account succesfull created! ~\n')
     print('Your username: {}'.format(username))
@@ -87,8 +94,8 @@ def create_customer_account():
 def login():
     '''Function that does a simple authentication'''
     clear()
+    display_title_bar()
     
-    print(TOP)
     print('~ Sign in ~\n')
     global auth # set auth to global so it can be used outside this function
     auth = input('Username: ')
@@ -97,6 +104,8 @@ def login():
         # Show menu if username exist
         show_menu()
     else:
+        print('Username is unknown. Try again')
+        sleep(2)
         login()
 
 def show_menu():
@@ -106,7 +115,7 @@ def show_menu():
     '''
     
     clear()
-    print(TOP)
+    display_title_bar()
     # Message to welcome user and show the logged in user
     print('~ Welcome {} ~\n'.format(bank1.clients[auth].display_name()))
 
@@ -117,7 +126,7 @@ def show_menu():
 
     if choice == 1:
         clear() 
-        print(TOP)
+        display_title_bar()
         # call and print get balance function
         print(bank1.clients[auth].get_balance()) # Show current balance
 
@@ -130,7 +139,7 @@ def show_menu():
     elif choice == 2:
         # call deposit function
         clear()
-        print(TOP)
+        display_title_bar()
         print(bank1.clients[auth].get_balance()) # Show current balance
         # Ask user to enter amount to deposit
         print('\nEnter amount to deposit: \n')
@@ -143,7 +152,7 @@ def show_menu():
     elif choice == 3:
         # call withdraw function
         clear()
-        print(TOP)
+        display_title_bar()
         print(bank1.clients[auth].get_balance()) # Show current balance
         # Ask user to input amount to withdraw
         print('\nEnter amount to withdraw: \n')
@@ -153,6 +162,9 @@ def show_menu():
         show_menu()
 
     elif choice == 4:
+        clear()
+        print('Goodbye ...')
+        sleep(2)
         clear()
         sys.exit()
 

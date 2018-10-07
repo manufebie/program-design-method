@@ -1,3 +1,5 @@
+from time import sleep
+
 class BaseAccount:
     '''Class representing a Bank account'''
 
@@ -10,6 +12,7 @@ class BaseAccount:
     def withdraw(self, amount):
         if amount > self.balance:
             raise ValueError('Not sufficient funds')
+            sleep(2)
         self.balance -= amount
 
     def deposit(self, amount):
