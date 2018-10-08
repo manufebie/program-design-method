@@ -80,6 +80,10 @@ def create_customer_account():
     clear()
     display_title_bar()
     
+    print('Creating account ...')
+    sleep(1)
+    print('Done!')
+
     print('\n~ Account succesfull created! ~\n')
     print('Your username: {}'.format(username))
     print('Your fullname: {}\n'.format(fullname))
@@ -102,6 +106,10 @@ def login():
 
     if auth.lower() in bank1.clients:
         # Show menu if username exist
+        clear()
+        display_title_bar()
+        print('Authenticating ... ')
+        sleep(1)
         show_menu()
     else:
         print('Username is unknown. Try again')
